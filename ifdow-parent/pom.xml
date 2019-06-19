@@ -1,0 +1,94 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.idw</groupId>
+		<artifactId>ifdow</artifactId>
+		<version>${reversion}</version>
+	</parent>
+	<artifactId>ifdow-parent</artifactId>
+	<!-- pom, jar, maven-plugin, ejb, war, ear, rar, par  -->
+	<packaging>pom</packaging>
+	<description>负责管理项目依赖及插件版本的公共部分</description>
+
+	<!-- 项目依赖公共版本 -->
+	<properties>
+		<!-- 项目环境 jdk/编码/编译参数 -->
+		<java.version>1.8</java.version>
+		<java.source.version>1.8</java.source.version>
+		<java.target.version>1.8</java.target.version>
+		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<file.encoding>UTF-8</file.encoding>
+
+		<argline>-server -Xms256m -Xmx512m -XX:PermSize=64m
+			-XX:MaxPermSize=128m -Dfile.encoding=UTF-8
+			-Djava.net.preferIPv4Stack=true</argline>
+		<arguments />
+
+		<!-- 项目环境 jar依赖 -->
+		<spring-boot.version>2.1.6.RELEASE</spring-boot.version>
+		
+		<!-- 模版引擎  -->
+		<!-- <freemarker.version>2.3.28</freemarker.version> -->
+	</properties>
+	
+	<dependencyManagement>
+	<!-- springboot jar庫 -->
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot.version}</version>
+				<!-- jar、war、pom -->
+				<type>pom</type>
+				<!-- compile\test\runntime\provided\system\import -->
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-devtools</artifactId>
+                <version>${spring-boot.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<pluginRepositories>
+		<!-- spring-boot 插件庫 -->
+		<pluginRepository>
+			<id>spring-snapshots</id>
+			<url>https://repo.spring.io/snapshot</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>spring-milestones</id>
+			<url>https://repo.spring.io/milestone</url>
+		</pluginRepository>
+	</pluginRepositories>
+	<build>
+		<plugins>
+			<!-- spring-boot插件  
+					1.1 spring-boot：run运行你的Spring Boot应用程序.
+					1.2 spring-boot：repackage重新打包jar / war为executable.
+					1.3 spring-boot：start和spring-boot：stop 管理Spring Boot应用程序的生命周期（即用于集成测试） ）.
+					1.4 spring-boot：build-info生成可由执行器使用的构建信息。
+					需要使用的 pluginRepository ==> https://repo.spring.io/snapshot https://repo.spring.io/milestone
+			-->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring-boot.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	<modules>
+		<module>ifdow-manager</module>
+	</modules>
+</project>

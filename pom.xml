@@ -1,0 +1,16 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.idw</groupId>
+  <artifactId>ifdow</artifactId>
+  <version>${reversion}</version>
+  <packaging>pom</packaging>
+  <name>做什么六九币 </name>
+  <description>这是六九币出品 该pom主要用于管理项目版本</description>
+  <properties>
+   <reversion>1.0.0-DO</reversion>
+  </properties>
+  <modules>
+  	<!-- 负责管理项目的仓库地址、依赖文件及版本、插件等 -->
+  	<module>ifdow-parent</module>
+  </modules>
+</project>

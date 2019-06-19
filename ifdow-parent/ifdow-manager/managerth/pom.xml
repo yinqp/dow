@@ -1,0 +1,17 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.idw</groupId>
+    <artifactId>ifdow-manager</artifactId>
+    <version>${reversion}</version>
+  </parent>
+  <artifactId>managerth</artifactId>
+  <name>thymeleaf 模版实现</name>
+  <description>使用th实现模版引擎</description>
+  <dependencies>
+  	<dependency>
+  		<groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-thymeleaf</artifactId>
+  	</dependency>
+  </dependencies>
+</project>
